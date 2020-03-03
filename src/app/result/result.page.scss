@@ -1,0 +1,169 @@
+ion-card-subtitle {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cell-class {
+    border-color: black;
+    border-width: .01em;
+    border-style: solid;
+    padding: 1px;
+}
+
+.active {
+	background-color: #ffe79d;
+}
+
+.inactive{
+    background-color: #ffcaca;
+}
+
+.hor-padding{
+    padding: 0px 10px;
+}
+
+.ver-padding{
+    padding: 10px 0px;
+}
+
+.top-padding {
+    padding-top: 10px;
+}
+
+header {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.25em;
+    text-transform: uppercase;
+}
+
+.header-text{
+    margin-bottom: 5px;
+    font-size: 13px;
+    background: #ececec;
+    padding: 2px;
+}
+
+.sub-header{
+    font-weight: bold;
+}
+
+.bottom-text-1{
+	border-top: 1px solid;
+}
+
+.bottom-text-1 > span, .bottom-text-2 > span {
+	padding: 5px;
+}
+
+.bottom-text-1, .bottom-text-2 {
+    font-size: 12px;
+}
+
+.border-bottom{
+	padding-bottom: 5px;
+	// border-bottom: 1px solid;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.middle-text {
+    font-weight: bold;
+}
+
+.bottom-text{
+	margin: 4px;
+    font-size: 10px;
+}
+
+.top-text{
+	font-size: 23px;
+}
+
+.year-container, .month-container {
+    margin: -5px 0px 0px 0px;
+    padding: 10px;
+}
+
+section {
+    margin-top: 1em;
+    margin-bottom: 2.5em;
+}
+
+section:not(.full-width),
+.full-width>header {
+    padding: 0 10px;
+}
+
+.forecast_container {
+    overflow-x: visible !important;
+    overflow-y: hidden;
+    word-wrap: break-word;
+    height: 20px;
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+.grey-color {
+	color: grey;
+}
+
+.red-color {
+	color: red;
+}
+
+.green-color {
+	color: green;
+}
+
+.brown-color {
+	color: #794343;
+}
+
+.purple-color {
+	color: purple;
+}
+
+.blue-color {
+	color: blue;
+}
+
+.black-color{
+    color: black;
+}
+
+.sub-red-color{
+    color: red !important;
+}
+
+.sub-green-color{
+    color: green !important;
+}
+
+ion-card-title{
+    font-size: 20px;
+}
+
+.no-padding{
+    padding: 0px;
+}
+
+header {
+    font-size: 19px !important;
+    font-weight: bold !important;
+    padding-left: 5px;
+}
+
+.top-header{
+    font-size: 22px;
+    font-weight: bold;
+    display: flex; 
+    justify-content: space-between;
+}
+
+.icon{
+    font-size: 30px;
+}

@@ -1,6 +1,8 @@
 {
   "name": "YaLyFengShui",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "3b22660c"
 }

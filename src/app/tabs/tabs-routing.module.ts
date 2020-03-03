@@ -14,7 +14,17 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-          }
+          },
+          {
+            path: 'result/:userID',
+            loadChildren: () =>
+              import('../result/result.module').then(m => m.ResultPageModule)
+          },
+          {
+            path: 'element/:elementIds',
+            loadChildren: () =>
+              import('../element/element.module').then(m => m.ElementPageModule)
+          },
         ]
       },
       {

@@ -1,0 +1,390 @@
+<ion-header>
+    <ion-toolbar>
+    	<ion-buttons slot="start">
+	      <ion-back-button defaultHref="/app/tabs/tab1"></ion-back-button>
+	    </ion-buttons>
+        <ion-title>
+            {{user.name}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">{{user.name}}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+     <ion-list>
+        <ion-item lines="none">
+          <ion-label>{{user.gender}} - {{user.dob | date}} - {{user.time | date:'shortTime'}}</ion-label>
+        </ion-item>
+    </ion-list>
+    <section>
+        <header>Date of Birth</header>
+        <ion-grid>
+            <ion-row class="ion-text-center">
+                <ion-col class="cell-class" col-auto>
+                    <div class="header-text border-bottom">Time</div>
+                    <div class="top-container {{user.HT.Color}}-color">
+                        <div class="top-text">{{user.HT.Chinese}}</div>
+                        <div class="middle-text">{{user.HT.Element}} {{user.HT.Sign}}</div>
+                        <div class="bottom-text">{{user.HT.English}} ({{user.HT.Shortcut}})</div>
+                    </div>
+                    <div class="bottom-container {{user.ET.Color}}-color">
+                        <div class="top-text">{{user.ET.Chinese}}</div>
+                        <div class="middle-text">{{user.ET.Zodiac}}  {{user.ET.Sign}}</div>
+                        <div class="bottom-text">{{user.ET.English}}  ({{user.ET.Shortcut}})</div>
+                    </div>
+                    <div class="bottom-text-1">
+                        <span *ngFor="let hidden of user.hiddenT" class="{{hidden.Color}}-color">{{hidden.Chinese}}</span>
+                    </div>
+                    <div class="bottom-text-2">
+                        <span  *ngFor="let hidden of user.hiddenT" class="{{hidden.Color}}-color">{{hidden.Acro}}{{hidden.Sign}}</span>
+                    </div>
+                </ion-col>
+                <ion-col class="cell-class active" col-auto>
+                    <div class="header-text border-bottom">Day</div>
+                    <div class="top-container {{user.HD.Color}}-color">
+                        <div class="top-text">{{user.HD.Chinese}}</div>
+                        <div class="middle-text">{{user.HD.Element}} {{user.HD.Sign}}</div>
+                        <div class="bottom-text">{{user.HD.English}} ({{user.HD.Shortcut}})</div>
+                    </div>
+                    <div class="bottom-container {{user.ED.Color}}-color">
+                        <div class="top-text">{{user.ED.Chinese}}</div>
+                        <div class="middle-text">{{user.ED.Zodiac}}  {{user.ED.Sign}} </div>
+                        <div class="bottom-text">{{user.ED.English}} ({{user.ED.Shortcut}})</div>
+                    </div>
+                    <div class="bottom-text-1">
+                        <span *ngFor="let hidden of user.hiddenD" class="{{hidden.Color}}-color">{{hidden.Chinese}}</span>
+                    </div>
+                    <div class="bottom-text-2">
+                        <span  *ngFor="let hidden of user.hiddenD" class="{{hidden.Color}}-color">{{hidden.Acro}}{{hidden.Sign}}</span>
+                    </div>
+                </ion-col>
+                <ion-col class="cell-class" col-auto>
+                    <div class="header-text border-bottom">Month</div>
+                    <div class="top-container {{user.HM.Color}}-color">
+                        <div class="top-text">{{user.HM.Chinese}}</div>
+                        <div class="middle-text">{{user.HM.Element}} {{user.HM.Sign}}</div>
+                        <div class="bottom-text">{{user.HM.English}} ({{user.HM.Shortcut}})</div>
+                    </div>
+                    <div class="bottom-container {{user.EM.Color}}-color">
+                        <div class="top-text">{{user.EM.Chinese}}</div>
+                        <div class="middle-text">{{user.EM.Zodiac}} {{user.EM.Sign}}   </div>
+                        <div class="bottom-text">{{user.EM.English}} ({{user.EM.Shortcut}})</div>
+                    </div>
+                    <div class="bottom-text-1">
+                        <span *ngFor="let hidden of user.hiddenM" class="{{hidden.Color}}-color">{{hidden.Chinese}}</span>
+                    </div>
+                    <div class="bottom-text-2">
+                        <span  *ngFor="let hidden of user.hiddenM" class="{{hidden.Color}}-color">{{hidden.Acro}}{{hidden.Sign}}</span>
+                    </div>
+                </ion-col>
+                <ion-col class="cell-class" col-auto>
+                    <div class="header-text border-bottom">Year</div>
+                    <div class="top-container {{user.HY.Color}}-color">
+                        <div class="top-text">{{user.HY.Chinese}}</div>
+                        <div class="middle-text">{{user.HY.Element}} {{user.HY.Sign}}</div>
+                        <div class="bottom-text">{{user.HY.English}} ({{user.HY.Shortcut}})</div>
+                    </div>
+                    <div class="bottom-container {{user.EY.Color}}-color">
+                        <div class="top-text">{{user.EY.Chinese}}</div>
+                        <div class="middle-text">{{user.EY.Zodiac}} {{user.EY.Sign}} </div>
+                        <div class="bottom-text">{{user.EY.English}}({{user.EY.Shortcut}})</div>
+                    </div>
+                    <div class="bottom-text-1">
+                        <span *ngFor="let hidden of user.hiddenY" class="{{hidden.Color}}-color">{{hidden.Chinese}}</span>
+                    </div>
+                    <div class="bottom-text-2">
+                        <span  *ngFor="let hidden of user.hiddenY" class="{{hidden.Color}}-color">{{hidden.Acro}}{{hidden.Sign}}</span>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </section>
+    <ion-list>
+        <ion-list-header>
+          Favorable
+        </ion-list-header>
+        <ion-item (click)="navigate()">
+          <ion-label>My Element</ion-label>
+          <ion-note color="dark" slot="end">
+            <span class="{{user.HD.Color}}-color bold">{{user.HD.Element}} ({{user.HD.Sign}})</span>
+          </ion-note>
+        </ion-item>
+        <ion-item (click)="navigate()">
+          <ion-label>Support</ion-label>
+          <ion-note color="dark" slot="end">
+            <span *ngFor="let element of user.favorable.elements" class="{{element.Color}}-color bold">{{element.Element}} </span>
+          </ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Enemy</ion-label>
+          <ion-note color="dark" slot="end">
+            <span class="bold {{this.user.unluckyElementColor}}-color">{{user.unluckyElement}} </span>
+          </ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Direction</ion-label>
+          <ion-note color="dark"  slot="end">
+            <span>{{user.favorable.sides}} </span>
+        </ion-note>
+        </ion-item>
+        <!-- <ion-item>
+          <ion-label>Lucky Number</ion-label>
+          <ion-note color="dark"  slot="end">7</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Gua</ion-label>
+          <ion-note color="dark"  slot="end">1</ion-note>
+        </ion-item> -->
+    </ion-list>
+    <ion-list>
+        <ion-list-header>
+          Elements
+        </ion-list-header>
+        <!-- <ion-card *ngFor="let business of user.favorable.businessElements">
+            <ion-card-header>
+                <ion-card-title class="{{business.color}}-color">{{business.element}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="black-color">
+                {{business.content}}
+            </ion-card-content>
+        </ion-card> -->
+        <ion-card [ngClass]="{'active': user?.favorable?.elementsList?.indexOf('Water') != -1}">
+        <ion-card-header>
+          <ion-card-title class="blue-color">Water</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="black-color">
+            <div *ngIf="user?.winElement?.element == 'Water'">
+            <span class="bold">{{user?.winElement?.relationship}} is your {{user?.winElement?.description}}:</span><br>
+            ({{user.winElement.sameGenderSign}}) {{user.winElement.sameGender}} ({{user.winElement.oppositGenderSign}}) {{user.winElement.oppositGender}}</div>
+            <div *ngIf="user?.lostElement?.element == 'Water'">
+            <span class="bold">{{user?.lostElement?.relationship}} is your {{user?.lostElement?.description}}:</span><br>
+            ({{user.lostElement.sameGenderSign}}) {{user.lostElement.sameGender}} ({{user.lostElement.oppositGenderSign}}) {{user.lostElement.oppositGender}}</div>
+            <div *ngIf="user?.motherElement?.element == 'Water'">
+            <span class="bold">{{user?.motherElement?.relationship}} is your {{user?.motherElement?.description}}:</span><br>
+            ({{user.motherElement.sameGenderSign}}) {{user.motherElement.sameGender}} ({{user.motherElement.oppositGenderSign}}) {{user.motherElement.oppositGender}}</div>
+            <div *ngIf="user?.childElement?.element == 'Water'">
+            <span class="bold">{{user?.childElement?.relationship}} is your {{user?.childElement?.description}}:</span><br>
+            ({{user.childElement.sameGenderSign}}) {{user.childElement.sameGender}} ({{user.childElement.oppositGenderSign}}) {{user.childElement.oppositGender}}</div>
+            <div *ngIf="user?.selfElement?.element == 'Water'">
+            <span class="bold">{{user?.selfElement?.relationship}} is your {{user?.selfElement?.description}}:</span><br>
+            ({{user.selfElement.sameGenderSign}}) {{user.selfElement.sameGender}} ({{user.selfElement.oppositGenderSign}}) {{user.selfElement.oppositGender}}</div>
+          <div class="top-padding"><span class="bold">Business: </span>វិស្វករ, មេធាវី, សំណង់អាគារ, ដេគ័រ ឌីស្សាញ, ហាងលក់ថ្នាំពេទ្យ, ហាងផ្កា, រៀបចំសួនផ្កា, គ្រូបង្រៀន, សាលារៀន, លក់គ្រឿងឈេី, ជាងចម្លាក់</div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card [ngClass]="{'active': user?.favorable?.elementsList?.indexOf('Metal') != -1}">
+        <ion-card-header>
+          <ion-card-title class="grey-color">Metal</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="black-color">
+            <div *ngIf="user?.winElement?.element == 'Metal'">
+            <span class="bold">{{user?.winElement?.relationship}} is your {{user?.winElement?.description}}:</span><br>
+            ({{user.winElement.sameGenderSign}}) {{user.winElement.sameGender}} ({{user.winElement.oppositGenderSign}}) {{user.winElement.oppositGender}}</div>
+            <div *ngIf="user?.lostElement?.element == 'Metal'">
+            <span class="bold">{{user?.lostElement?.relationship}} is your {{user?.lostElement?.description}}:</span><br>
+            ({{user.lostElement.sameGenderSign}}) {{user.lostElement.sameGender}} ({{user.lostElement.oppositGenderSign}}) {{user.lostElement.oppositGender}}</div>
+            <div *ngIf="user?.motherElement?.element == 'Metal'">
+            <span class="bold">{{user?.motherElement?.relationship}} is your {{user?.motherElement?.description}}:</span><br>
+            ({{user.motherElement.sameGenderSign}}) {{user.motherElement.sameGender}} ({{user.motherElement.oppositGenderSign}}) {{user.motherElement.oppositGender}}</div>
+            <div *ngIf="user?.childElement?.element == 'Metal'">
+            <span class="bold">{{user?.childElement?.relationship}} is your {{user?.childElement?.description}}:</span><br>
+            ({{user.childElement.sameGenderSign}}) {{user.childElement.sameGender}} ({{user.childElement.oppositGenderSign}}) {{user.childElement.oppositGender}}</div>
+            <div *ngIf="user?.selfElement?.element == 'Metal'">
+            <span class="bold">{{user?.selfElement?.relationship}} is your {{user?.selfElement?.description}}:</span><br>
+            ({{user.selfElement.sameGenderSign}}) {{user.selfElement.sameGender}} ({{user.selfElement.oppositGenderSign}}) {{user.selfElement.oppositGender}}</div>
+          <div class="top-padding"><span class="bold">Business: </span> លក់គ្រឿងអល្ល័ង្ការ, វេរលុយ, ដូរលុយ, គ្រឿងដែក, លក់ឥវ៉ាន់ប្រេន</div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card [ngClass]="{'active': user?.favorable?.elementsList?.indexOf('Fire') != -1}">
+        <ion-card-header>
+          <ion-card-title class="red-color">Fire</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="black-color">
+            <div *ngIf="user?.winElement?.element == 'Fire'">
+            <span class="bold">{{user?.winElement?.relationship}} is your {{user?.winElement?.description}}:</span><br>
+            ({{user.winElement.sameGenderSign}}) {{user.winElement.sameGender}} ({{user.winElement.oppositGenderSign}}) {{user.winElement.oppositGender}}</div>
+            <div *ngIf="user?.lostElement?.element == 'Fire'">
+            <span class="bold">{{user?.lostElement?.relationship}} is your {{user?.lostElement?.description}}:</span><br>
+            ({{user.lostElement.sameGenderSign}}) {{user.lostElement.sameGender}} ({{user.lostElement.oppositGenderSign}}) {{user.lostElement.oppositGender}}</div>
+            <div *ngIf="user?.motherElement?.element == 'Fire'">
+            <span class="bold">{{user?.motherElement?.relationship}} is your {{user?.motherElement?.description}}:</span><br>
+            ({{user.motherElement.sameGenderSign}}) {{user.motherElement.sameGender}} ({{user.motherElement.oppositGenderSign}}) {{user.motherElement.oppositGender}}</div>
+            <div *ngIf="user?.childElement?.element == 'Fire'">
+            <span class="bold">{{user?.childElement?.relationship}} is your {{user?.childElement?.description}}:</span><br>
+            ({{user.childElement.sameGenderSign}}) {{user.childElement.sameGender}} ({{user.childElement.oppositGenderSign}}) {{user.childElement.oppositGender}}</div>
+            <div *ngIf="user?.selfElement?.element == 'Fire'">
+            <span class="bold">{{user?.selfElement?.relationship}} is your {{user?.selfElement?.description}}:</span><br>
+            ({{user.selfElement.sameGenderSign}}) {{user.selfElement.sameGender}} ({{user.selfElement.oppositGenderSign}}) {{user.selfElement.oppositGender}}</div>
+          <div class="top-padding"><span class="bold">Business: </span> លក់គ្រឿងភ្លេីង, គ្រឿងសំអាង, ឧបករណ៍អេឡិចត្រូនិក, តារា, ក្រុមហ៊ុនផ្សព្វផ្សាយ, ទិញលក់ភាគហ៊ុន, ហាងកាហ្វេ, ការ៉ាសសាំង, លក់ហ្គាស, លក់សូឡា</div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card [ngClass]="{'active': user?.favorable?.elementsList?.indexOf('Wood') != -1}">
+        <ion-card-header>
+          <ion-card-title class="green-color">Wood</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="black-color">
+            <div *ngIf="user?.winElement?.element == 'Wood'">
+            <span class="bold">{{user?.winElement?.relationship}} is your {{user?.winElement?.description}}:</span><br>
+            ({{user.winElement.sameGenderSign}}) {{user.winElement.sameGender}} ({{user.winElement.oppositGenderSign}}) {{user.winElement.oppositGender}}</div>
+            <div *ngIf="user?.lostElement?.element == 'Wood'">
+            <span class="bold">{{user?.lostElement?.relationship}} is your {{user?.lostElement?.description}}:</span><br>
+            ({{user.lostElement.sameGenderSign}}) {{user.lostElement.sameGender}} ({{user.lostElement.oppositGenderSign}}) {{user.lostElement.oppositGender}}</div>
+            <div *ngIf="user?.motherElement?.element == 'Wood'">
+            <span class="bold">{{user?.motherElement?.relationship}} is your {{user?.motherElement?.description}}:</span><br>
+            ({{user.motherElement.sameGenderSign}}) {{user.motherElement.sameGender}} ({{user.motherElement.oppositGenderSign}}) {{user.motherElement.oppositGender}}</div>
+            <div *ngIf="user?.childElement?.element == 'Wood'">
+            <span class="bold">{{user?.childElement?.relationship}} is your {{user?.childElement?.description}}:</span><br>
+            ({{user.childElement.sameGenderSign}}) {{user.childElement.sameGender}} ({{user.childElement.oppositGenderSign}}) {{user.childElement.oppositGender}}</div>
+            <div *ngIf="user?.selfElement?.element == 'Wood'">
+            <span class="bold">{{user?.selfElement?.relationship}} is your {{user?.selfElement?.description}}:</span><br>
+            ({{user.selfElement.sameGenderSign}}) {{user.selfElement.sameGender}} ({{user.selfElement.oppositGenderSign}}) {{user.selfElement.oppositGender}}</div>
+          <div class="top-padding"><span class="bold">Business: </span> វិស្វករ, មេធាវី, សំណង់អាគារ, ដេគ័រ ឌីស្សាញ, ហាងលក់ថ្នាំពេទ្យ, ហាងផ្កា, រៀបចំសួនផ្កា, គ្រូបង្រៀន, សាលារៀន, លក់គ្រឿងឈេី, ជាងចម្លាក់</div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="brown-color">Earth</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="black-color">
+            <div *ngIf="user?.winElement?.element == 'Earth'">
+            <span class="bold">{{user?.winElement?.relationship}} is your {{user?.winElement?.description}}:</span><br>
+            ({{user.winElement.sameGenderSign}}) {{user.winElement.sameGender}} ({{user.winElement.oppositGenderSign}}) {{user.winElement.oppositGender}}</div>
+            <div *ngIf="user?.lostElement?.element == 'Earth'">
+            <span class="bold">{{user?.lostElement?.relationship}} is your {{user?.lostElement?.description}}:</span><br>
+            ({{user.lostElement.sameGenderSign}}) {{user.lostElement.sameGender}} ({{user.lostElement.oppositGenderSign}}) {{user.lostElement.oppositGender}}</div>
+            <div *ngIf="user?.motherElement?.element == 'Earth'">
+            <span class="bold">{{user?.motherElement?.relationship}} is your {{user?.motherElement?.description}}:</span><br>
+            ({{user.motherElement.sameGenderSign}}) {{user.motherElement.sameGender}} ({{user.motherElement.oppositGenderSign}}) {{user.motherElement.oppositGender}}</div>
+            <div *ngIf="user?.childElement?.element == 'Earth'">
+            <span class="bold">{{user?.childElement?.relationship}} is your {{user?.childElement?.description}}:</span><br>
+            ({{user.childElement.sameGenderSign}}) {{user.childElement.sameGender}} ({{user.childElement.oppositGenderSign}}) {{user.childElement.oppositGender}}</div>
+            <div *ngIf="user?.selfElement?.element == 'Earth'">
+            <span class="bold">{{user?.selfElement?.relationship}} is your {{user?.selfElement?.description}}:</span><br>
+            ({{user.selfElement.sameGenderSign}}) {{user.selfElement.sameGender}} ({{user.selfElement.oppositGenderSign}}) {{user.selfElement.oppositGender}}</div>
+          <div class="top-padding"><span class="bold">Business: </span> អចលនទ្រព្យ, ភោជនីយ៍ដ្ឋាន, លក់ឥវ៉ាន់រាយ និងបោះដុំ, ធនាគារ, រំលោះ បញ្ចាំ</div>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+    <ion-list>
+        <ion-list-header>
+          Body
+        </ion-list-header>
+        <ion-card>
+            <ion-card-header>
+              <ion-card-title>Time</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="black-color">
+              <span class="bold">លេី: </span> បុគ្គលិកប្រុស, កូនប្រុស<br> <span class="bold">ក្រោម: </span>បុគ្គលិកស្រី, កូនស្រី
+            </ion-card-content>
+          </ion-card>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Day</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="black-color">
+              <span class="bold">លេី: </span>សុខភាព <br> <span class="bold">ក្រោម: </span>គូស្រករ លុយកាក់ ផ្ទះ
+            </ion-card-content>
+          </ion-card>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Month</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="black-color">
+              <span class="bold">លេី: </span>ការទំនាក់ទំនង ការងាររកសុី <br><span class="bold">ក្រោម: </span>កន្លែងធ្វេីការ មុខតំណែង ថៅកែ ទំនួលខុសត្រូវ
+            </ion-card-content>
+          </ion-card>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Year</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="black-color">
+              <span class="bold">លេី: </span>កេរ្ត៍ឈ្មោះ ឥទ្ធិពល<br> <span class="bold">ក្រោម: </span>កេត្ត៍មរតក
+            </ion-card-content>
+          </ion-card>
+    </ion-list>
+    <section>
+        <header>Age</header>
+        <ion-grid>
+            <ion-row class="ion-text-center">
+                <ion-col class="cell-class" size="3" *ngFor="let veyChor of user.veyChors">
+                    <div [ngClass]="{'active': veyChor.isTopActive == true, 'inactive': veyChor.Top.Element == user.unluckyElement}">
+                        <div class="header-text">{{veyChor.YearTop}} 
+                            <!-- <div class="bold">(55%)</div> -->
+                        </div>
+                        <div class="top-container border-bottom {{veyChor.Top.Color}}-color">
+                            <div class="top-text">{{veyChor.Top.Chinese}}</div>
+                            <div class="middle-text">{{veyChor.Top.Element}} {{veyChor.Top.Sign}}</div>
+                            <!-- <div class="bottom-text">
+                                <span class="red-color">HT </span>
+                                <span class="green-color">HD </span>
+                                <span class="green-color">HM </span>
+                                <span class="red-color">HY </span>
+                            </div> -->
+                            <div class="bottom-text">{{veyChor.Top.English}} ({{veyChor.Top.Shortcut}})</div>
+                        </div>
+                    </div>
+                    <div [ngClass]="{'active': veyChor.isBottomActive == true, 'inactive': veyChor.Bottom.Element == user.unluckyElement}">
+                        <div class="header-text">{{veyChor.YearBottom}} 
+                            <!-- <div class="bold">(15%)</div> -->
+                        </div>
+                        <div class="top-container border-bottom {{veyChor.Bottom.Color}}-color">
+                            <div class="top-text">{{veyChor.Bottom.Chinese}}</div>
+                            <div class="middle-text">{{veyChor.Bottom.Zodiac}}  </div>
+                            <!-- <div class="bottom-text">
+                                <span class="green-color">ET </span>
+                                <span class="red-color">ED </span>
+                                <span class="green-color">EM </span>
+                                <span class="red-color">EY </span>
+                            </div> -->
+                            <div class="bottom-text">{{veyChor.Bottom.English}} {{veyChor.Bottom.Sign}} ({{veyChor.Bottom.Shortcut}})</div>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </section>
+   
+    
+    <section>
+        <header>Year Destiny</header>
+        <ion-grid>
+            <ion-row class="ion-text-center">
+	        	<ion-col class="cell-class" size="3" *ngFor="let year of user.yearList">
+	                <div class="header-text border-bottom">{{year.year}} ({{year.age}})</div>
+	                <div class="year-container {{year.top.Color}}-color" [ngClass]="{'active': year.isTopActive == true, 'inactive': year.top.Element == user.unluckyElement}">
+	                    <div class="top-text">{{year.top.Chinese}}</div>
+	                    <div class="middle-text">{{year.top.Element}} {{year.top.Sign}}</div>
+	                    <div class="bottom-text">{{year.top.English}} ({{year.top.Shortcut}})</div>
+	                </div>
+	                <div class="year-container {{year.bottom.Color}}-color" [ngClass]="{'active': year.isBottomActive == true, 'inactive': year.bottom.Element == user.unluckyElement}">
+	                    <div class="top-text">{{year.bottom.Chinese}}</div>
+	                    <div class="middle-text">{{year.bottom.Zodiac}}</div>
+	                    <div class="bottom-text">{{year.bottom.English}} {{year.bottom.Sign}} ({{year.bottom.Shortcut}})</div>
+	                </div>
+	            </ion-col>
+            </ion-row>
+        </ion-grid>
+    </section>
+    <section>
+        <header>Month Destiny</header>
+        <ion-grid>
+            <ion-row class="ion-text-center">
+	        	<ion-col class="cell-class" size="3" *ngFor="let month of user.monthList">
+	                <div class="header-text border-bottom">{{month.month}} {{month.year}}</div>
+	                <div class="month-container {{month.top.Color}}-color" [ngClass]="{'active': month.isTopActive == true, 'inactive': month.top.Element == user.unluckyElement}">
+	                    <div class="top-text">{{month.top.Chinese}}</div>
+	                    <div class="middle-text">{{month.top.Element}} {{month.top.Sign}}</div>
+	                    <div class="bottom-text">{{month.top.English}} ({{month.top.Shortcut}})</div>
+	                </div>
+	                <div class="month-container {{month.bottom.Color}}-color" [ngClass]="{'active': month.isBottomActive == true, 'inactive': month.bottom.Element == user.unluckyElement}">
+                        <div class="top-text">{{month.bottom.Chinese}}</div>
+                        <div class="middle-text">{{month.bottom.Zodiac}} </div>
+                        <div class="bottom-text">{{month.bottom.English}} {{month.bottom.Sign}} ({{month.bottom.Shortcut}})</div>
+                    </div>
+	            </ion-col>
+            </ion-row>
+        </ion-grid>
+    </section>
+</ion-content>

@@ -1,17 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-header>
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+        <ion-title>
+            Information
+        </ion-title>
     </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+</ion-header>
+<ion-content>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Information</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-list>
+        <ion-item>
+            <ion-label>Gender</ion-label>
+            <ion-select required [(ngModel)]="user.gender">
+                <ion-select-option value="Male">Male</ion-select-option>
+                <ion-select-option value="Female">Female</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-input [(ngModel)]="user.name" placeholder="Full Name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Date of Birth</ion-label>
+            <ion-datetime cancelable=false [(ngModel)]="user.dob" placeholder="Select Date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>Time</ion-label>
+            <ion-datetime cancelable=false [(ngModel)]="user.time" display-format="h:mm A" picker-format="h:mm A"></ion-datetime>
+        </ion-item>
+        <section>
+          <ion-button [disabled]="!user.gender || !user.name || !user.dob || !user.time" color="warning" expand="block" (click)="navigate(11)" >See Your Destiny</ion-button>
+        </section>
+    </ion-list>
+    
+     
+      
 </ion-content>
