@@ -12,31 +12,17 @@
       <ion-title size="large">People</ion-title>
     </ion-toolbar>
   </ion-header>
+   <ion-list *ngFor="let user of users">
+        <ion-item-sliding>
+          <ion-item (click)="navigate(user.id)">
+            <ion-label>{{user.name}}</ion-label>
+            <ion-note slot="end">{{user.dob | date:'shortDate'}} - {{user.time | date:'shortTime'}}</ion-note>
+          </ion-item>
 
-  <ion-list>
-    <ion-list-header>
-      Ya Ly
-    </ion-list-header>
-    <ion-item>
-      <ion-label>Female - 06 July 1989 - 1:15 PM</ion-label>
-    </ion-item>
-    <ion-list-header>
-      Vy Ly
-    </ion-list-header>
-    <ion-item>
-      <ion-label>Female - 06 July 1989 - 1:15 PM</ion-label>
-    </ion-item>
-    <ion-list-header>
-      Tong Ly
-    </ion-list-header>
-    <ion-item>
-      <ion-label>Male - 06 July 1989 - 1:15 PM</ion-label>
-    </ion-item>
-    <ion-list-header>
-      Pheak Ly
-    </ion-list-header>
-    <ion-item>
-      <ion-label>Male - 06 July 1989 - 1:15 PM</ion-label>
-    </ion-item>
-  </ion-list>
+          <ion-item-options side="end">
+            <ion-item-option color="primary" (click)="edit(user.id)">Edit</ion-item-option>
+            <ion-item-option color="danger" (click)="delete(user.id)">Delete</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
 </ion-content>

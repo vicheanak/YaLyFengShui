@@ -1,7 +1,10 @@
 <ion-header>
     <ion-toolbar>
     	<ion-buttons slot="start">
-	      <ion-back-button defaultHref="/app/tabs/tab1"></ion-back-button>
+	      <ion-button (click)="goBack()">
+          <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+          Back
+        </ion-button>
 	    </ion-buttons>
         <ion-title>
             {{user.name}}
@@ -267,7 +270,7 @@
         </ion-card-content>
       </ion-card>
     </ion-list>
-    <ion-list>
+    <!-- <ion-list>
         <ion-list-header>
           Body
         </ion-list-header>
@@ -303,7 +306,7 @@
               <span class="bold">លេី: </span>កេរ្ត៍ឈ្មោះ ឥទ្ធិពល<br> <span class="bold">ក្រោម: </span>កេត្ត៍មរតក
             </ion-card-content>
           </ion-card>
-    </ion-list>
+    </ion-list> -->
     <section>
         <header>Age</header>
         <ion-grid>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import { Storage } from '@ionic/storage';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-result',
@@ -248,7 +249,8 @@ export class ResultPage implements OnInit {
   	constructor(
 	  	private router: Router, 
 	  	private route: ActivatedRoute,
-	  	private storage: Storage){}
+	  	private storage: Storage,
+	  	private location: Location){}
 
   	ionViewDidEnter() {
 
@@ -272,7 +274,6 @@ export class ResultPage implements OnInit {
 
 		this.storage.get(userID).then(x => {
 			this.user = JSON.parse(x);
-			// console.log(this.user);
 
 			let startYear = moment("1/1/1900", "MM/DD/YYYY");
 
@@ -318,7 +319,6 @@ export class ResultPage implements OnInit {
 			let HT = myTimes["HT"];
 			let ET = myTimes["ET"];
 
-			// console.log({HT, ET, HD, ED, HM, EM, HY, EY});
 
 			this.user.HT = this.HTable["H"+HT]; 
 			this.user.ET = this.ETable["E"+ET];
@@ -364,7 +364,6 @@ export class ResultPage implements OnInit {
 				sides: sides,
 				businessElements: businessElements
 			}
-			console.log({count, elements, elementsList});
 
 			
 			//VEY CHOR
@@ -422,13 +421,10 @@ export class ResultPage implements OnInit {
 
 			
 			this.user.yearList = this.getYearList(this.user.dob);
-			// console.log(this.user.yearList);
 
 			this.user.monthList = this.getMonthList(moment().format("M")+"/15/2020");
-			// console.log(this.user.monthList);
 
 			this.user.hiddenT = this.getHidden(ET);
-			// console.log('Before', this.user.hiddenT);
 			this.user.hiddenD = this.getHidden(ED);
 			this.user.hiddenM = this.getHidden(EM);
 			this.user.hiddenY = this.getHidden(EY);
@@ -789,12 +785,9 @@ export class ResultPage implements OnInit {
 		let newMonthFirstDay = moment(newCountMonth+"/"+firstNewMonth+"/"+veyChorYears, "MM/DD/YYYY");
 		let diffVeyChorDays = Math.round(Math.abs(moment.duration(endDate.diff(newMonthFirstDay)).asDays()));
 		let veyChor = Math.round(diffVeyChorDays / 3);
-		// console.log({veyChor});
-		// console.log('diffVeyChorDays => ' + newMonthFirstDay.format('l') + ' ' + endDate.format('l'), diffVeyChorDays);
 
 		let countHM = HM;
 		let countEM = EM;
-		// console.log({countHM, countEM});
 		let myVeyChors = [];
 
 		let birthday = moment(date, "MM/DD/YYYY");
@@ -828,9 +821,6 @@ export class ResultPage implements OnInit {
 			
 			// let eachH = HTable["H"+countHM];
 			// let eachE = ETable["E"+countEM];
-			// console.log(i + "-" + (i + 5), eachH["Element"] + eachH["Sign"]);
-			// console.log((i + 5) + "-" + (i + 10), eachE["Zodiac"]);
-			// console.log('--------');	
 		}
 
 		return myVeyChors;
@@ -888,7 +878,6 @@ export class ResultPage implements OnInit {
 		let motherElementIndex = myElementIndex - 1;
 		let myElementMother = (motherElementIndex == -1 ) ? bornElements[4] : bornElements[motherElementIndex];
 
-		console.log('USER HD', this.user.HD);
 
 		let winIndex = myElementIndex + 2;
 		winIndex = (winIndex == 5) ? 0 : winIndex;
@@ -965,8 +954,6 @@ export class ResultPage implements OnInit {
 			"relationshipBetween": "Self"
 		}
 
-		console.log({selfIndex});
-		console.log('self', this.user.selfElement);
 
 		// let relationshipElements = {
 		// 	"winElement": "Money",
@@ -1072,7 +1059,6 @@ export class ResultPage implements OnInit {
 			elementDTIndex = 4
 		}
 
-		// console.log({elementDT, elementDTIndex});
 
 		if (elementDT){
 			matchElement = [];
@@ -1140,7 +1126,6 @@ export class ResultPage implements OnInit {
 
 		let sides = [].concat.apply([], mySides);
 
-		console.log(sides);
 
 		let businessElements = {
 			"Water": {
@@ -1185,7 +1170,6 @@ export class ResultPage implements OnInit {
 			elementsList: elementsList
 		};
 
-		// console.log({count, matchElement});
 	}
 
 	getBusinessElements(elements){
@@ -1197,4 +1181,8 @@ export class ResultPage implements OnInit {
 		this.router.navigate(['/tabs/tab1/element/1,2,3']);
 	}
 
+
+	goBack(){
+		this.location.back();
+	}
 }

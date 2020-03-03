@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import { Storage } from '@ionic/storage';
-
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-tab1',
@@ -10,11 +10,13 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-	user: any = { id: '1', gender: 'Female', name: 'Ya Ly', dob: '1988-05-24T19:34:22.033+07:00', time: '2020-03-02T15:34:22.034+07:00' };
+	user: any = { id: '', gender: '', name: '', dob: '', time: '' };
 
 	constructor(
 	  	private router: Router, 
-	    private storage: Storage
+	    private storage: Storage,
+	  	private route: ActivatedRoute,
+	  	private location: Location
     	){}
 
 	genID () {
@@ -23,9 +25,21 @@ export class Tab1Page {
 	  // after the decimal.
 	  return '_' + Math.random().toString(36).substr(2, 9);
 	};
-	navigate(personId){
 
-		console.log('user ==> ', this.user);
+	ionViewDidEnter(){
+		let userID = this.route.snapshot.params['userID'];
+		if (userID){
+			this.storage.get(userID).then(x => {
+				this.user = JSON.parse(x);
+			})
+		}
+	}
+
+	goBack(){
+		this.location.back();
+	}
+
+	navigate(personId){
 
 		let dob = moment(this.user.dob);
 		let getDate = parseInt(dob.format('D'));
@@ -34,38 +48,8 @@ export class Tab1Page {
 		let getHour = parseInt(dob.format('HH'));
 		let getMinute = parseInt(dob.format('mm'));
 
-		console.log({getDate, getMonth, getYear, getHour, getMinute});
-		let ID = this.genID();
-		this.user.id = ID 
+		this.user.id = (this.user.id == "") ? this.genID() : this.user.id;
 	 	this.storage.set(this.user.id, JSON.stringify(this.user));
-
-	 // 	this.storage.keys().then((val) => {
-	 // 		let id = (val.length) ? 1 : val.length + 1;
-	 // 		console.log({val, id});
-	 // 		this.storage.set(this.genID(), JSON.stringify(this.user));
-		// 	// val.forEach((i) => {
-		// 	// 	console.log({i});
-		// 	// 	let id = i + 1;
-		// 		// this.storage.remove(i);
-		// 		// this.storage.get(i).then(x => {
-		// 		// 	console.log({i, x});
-		// 		// });
-		// 	// });
-		// });
-
-		// this.storage.keys().then((val) => {
-		// 	val.forEach((i) => {
-		// 		this.storage.remove(i);
-		// 		this.storage.get(i).then(x => {
-		// 			console.log({i, x});
-		// 		});
-		// 	});
-		// });
-		// Or to get a key/value pair
-		// this.storage.get('age').then((val) => {
-		// 	console.log('age', val);
-		// });
-
-		this.router.navigate(['/tabs/tab1/result/'+ID]);
+		this.router.navigate(['/tabs/tab1/result/'+this.user.id]);
 	}
 }

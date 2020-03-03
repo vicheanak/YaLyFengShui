@@ -9,6 +9,8 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +22,8 @@ import { AppComponent } from './app.component';
       name: '__mydb',
       driverOrder: ['websql', 'indexeddb', 'sqlite']
     }),
-	  AppRoutingModule
+	  AppRoutingModule,
+	  ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,

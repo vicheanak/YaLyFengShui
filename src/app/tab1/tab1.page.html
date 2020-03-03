@@ -1,5 +1,11 @@
 <ion-header>
     <ion-toolbar>
+        <ion-buttons *ngIf="user?.id != ''" slot="start">
+          <ion-button (click)="goBack()">
+          <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+          Back
+        </ion-button>
+        </ion-buttons>
         <ion-title>
             Information
         </ion-title>
