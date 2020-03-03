@@ -6,6 +6,11 @@
           Back
         </ion-button>
 	    </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button (click)="edit(user.id)">
+          Edit
+        </ion-button>
+        </ion-buttons>
         <ion-title>
             {{user.name}}
         </ion-title>
@@ -30,13 +35,13 @@
                     <div class="header-text border-bottom">Time</div>
                     <div class="top-container {{user.HT.Color}}-color">
                         <div class="top-text">{{user.HT.Chinese}}</div>
-                        <div class="middle-text">{{user.HT.Element}} {{user.HT.Sign}}</div>
-                        <div class="bottom-text">{{user.HT.English}} ({{user.HT.Shortcut}})</div>
+                        <div class="middle-text">{{user.HT.Element}}{{user.HT.Sign}}</div>
+                        <div class="bottom-text">{{user.HT.English}}({{user.HT.Shortcut}})</div>
                     </div>
                     <div class="bottom-container {{user.ET.Color}}-color">
                         <div class="top-text">{{user.ET.Chinese}}</div>
-                        <div class="middle-text">{{user.ET.Zodiac}}  {{user.ET.Sign}}</div>
-                        <div class="bottom-text">{{user.ET.English}}  ({{user.ET.Shortcut}})</div>
+                        <div class="middle-text">{{user.ET.Zodiac}}{{user.ET.Sign}}</div>
+                        <div class="bottom-text">{{user.ET.English}}({{user.ET.Shortcut}})</div>
                     </div>
                     <div class="bottom-text-1">
                         <span *ngFor="let hidden of user.hiddenT" class="{{hidden.Color}}-color">{{hidden.Chinese}}</span>
@@ -49,13 +54,13 @@
                     <div class="header-text border-bottom">Day</div>
                     <div class="top-container {{user.HD.Color}}-color">
                         <div class="top-text">{{user.HD.Chinese}}</div>
-                        <div class="middle-text">{{user.HD.Element}} {{user.HD.Sign}}</div>
-                        <div class="bottom-text">{{user.HD.English}} ({{user.HD.Shortcut}})</div>
+                        <div class="middle-text">{{user.HD.Element}}{{user.HD.Sign}}</div>
+                        <div class="bottom-text">{{user.HD.English}}({{user.HD.Shortcut}})</div>
                     </div>
                     <div class="bottom-container {{user.ED.Color}}-color">
                         <div class="top-text">{{user.ED.Chinese}}</div>
-                        <div class="middle-text">{{user.ED.Zodiac}}  {{user.ED.Sign}} </div>
-                        <div class="bottom-text">{{user.ED.English}} ({{user.ED.Shortcut}})</div>
+                        <div class="middle-text">{{user.ED.Zodiac}}{{user.ED.Sign}} </div>
+                        <div class="bottom-text">{{user.ED.English}}({{user.ED.Shortcut}})</div>
                     </div>
                     <div class="bottom-text-1">
                         <span *ngFor="let hidden of user.hiddenD" class="{{hidden.Color}}-color">{{hidden.Chinese}}</span>
@@ -68,13 +73,13 @@
                     <div class="header-text border-bottom">Month</div>
                     <div class="top-container {{user.HM.Color}}-color">
                         <div class="top-text">{{user.HM.Chinese}}</div>
-                        <div class="middle-text">{{user.HM.Element}} {{user.HM.Sign}}</div>
-                        <div class="bottom-text">{{user.HM.English}} ({{user.HM.Shortcut}})</div>
+                        <div class="middle-text">{{user.HM.Element}}{{user.HM.Sign}}</div>
+                        <div class="bottom-text">{{user.HM.English}}({{user.HM.Shortcut}})</div>
                     </div>
                     <div class="bottom-container {{user.EM.Color}}-color">
                         <div class="top-text">{{user.EM.Chinese}}</div>
-                        <div class="middle-text">{{user.EM.Zodiac}} {{user.EM.Sign}}   </div>
-                        <div class="bottom-text">{{user.EM.English}} ({{user.EM.Shortcut}})</div>
+                        <div class="middle-text">{{user.EM.Zodiac}}{{user.EM.Sign}}   </div>
+                        <div class="bottom-text">{{user.EM.English}}({{user.EM.Shortcut}})</div>
                     </div>
                     <div class="bottom-text-1">
                         <span *ngFor="let hidden of user.hiddenM" class="{{hidden.Color}}-color">{{hidden.Chinese}}</span>
@@ -87,8 +92,8 @@
                     <div class="header-text border-bottom">Year</div>
                     <div class="top-container {{user.HY.Color}}-color">
                         <div class="top-text">{{user.HY.Chinese}}</div>
-                        <div class="middle-text">{{user.HY.Element}} {{user.HY.Sign}}</div>
-                        <div class="bottom-text">{{user.HY.English}} ({{user.HY.Shortcut}})</div>
+                        <div class="middle-text">{{user.HY.Element}}{{user.HY.Sign}}</div>
+                        <div class="bottom-text">{{user.HY.English}}({{user.HY.Shortcut}})</div>
                     </div>
                     <div class="bottom-container {{user.EY.Color}}-color">
                         <div class="top-text">{{user.EY.Chinese}}</div>
@@ -161,20 +166,21 @@
         <ion-card-content class="black-color">
             <div *ngIf="user?.winElement?.element == 'Water'">
             <span class="bold">{{user?.winElement?.relationship}} is your {{user?.winElement?.description}}:</span><br>
-            ({{user.winElement.sameGenderSign}}) {{user.winElement.sameGender}} ({{user.winElement.oppositGenderSign}}) {{user.winElement.oppositGender}}</div>
+            {{user.winElement.sameGender}}, {{user.winElement.oppositGender}}</div>
             <div *ngIf="user?.lostElement?.element == 'Water'">
             <span class="bold">{{user?.lostElement?.relationship}} is your {{user?.lostElement?.description}}:</span><br>
-            ({{user.lostElement.sameGenderSign}}) {{user.lostElement.sameGender}} ({{user.lostElement.oppositGenderSign}}) {{user.lostElement.oppositGender}}</div>
+            {{user.lostElement.sameGender}}, {{user.lostElement.oppositGender}}</div>
             <div *ngIf="user?.motherElement?.element == 'Water'">
             <span class="bold">{{user?.motherElement?.relationship}} is your {{user?.motherElement?.description}}:</span><br>
-            ({{user.motherElement.sameGenderSign}}) {{user.motherElement.sameGender}} ({{user.motherElement.oppositGenderSign}}) {{user.motherElement.oppositGender}}</div>
+            {{user.motherElement.sameGender}},  {{user.motherElement.oppositGender}}</div>
             <div *ngIf="user?.childElement?.element == 'Water'">
             <span class="bold">{{user?.childElement?.relationship}} is your {{user?.childElement?.description}}:</span><br>
-            ({{user.childElement.sameGenderSign}}) {{user.childElement.sameGender}} ({{user.childElement.oppositGenderSign}}) {{user.childElement.oppositGender}}</div>
+            {{user.childElement.sameGender}}, {{user.childElement.oppositGender}}</div>
             <div *ngIf="user?.selfElement?.element == 'Water'">
             <span class="bold">{{user?.selfElement?.relationship}} is your {{user?.selfElement?.description}}:</span><br>
-            ({{user.selfElement.sameGenderSign}}) {{user.selfElement.sameGender}} ({{user.selfElement.oppositGenderSign}}) {{user.selfElement.oppositGender}}</div>
-          <div class="top-padding"><span class="bold">Business: </span>វិស្វករ, មេធាវី, សំណង់អាគារ, ដេគ័រ ឌីស្សាញ, ហាងលក់ថ្នាំពេទ្យ, ហាងផ្កា, រៀបចំសួនផ្កា, គ្រូបង្រៀន, សាលារៀន, លក់គ្រឿងឈេី, ជាងចម្លាក់</div>
+            {{user.selfElement.sameGender}}, {{user.selfElement.oppositGender}}</div>
+          <div class="top-padding"><span class="bold">Business: </span>
+          Advertising, chemical engineering, delivery, education, entertainment, fishing, health care, laundry, media, medicine, online store (e-business), psychology, public relation, transportation, travel, water and other beverages.</div>
         </ion-card-content>
       </ion-card>
       <ion-card [ngClass]="{'active': user?.favorable?.elementsList?.indexOf('Metal') != -1}">
@@ -184,20 +190,21 @@
         <ion-card-content class="black-color">
             <div *ngIf="user?.winElement?.element == 'Metal'">
             <span class="bold">{{user?.winElement?.relationship}} is your {{user?.winElement?.description}}:</span><br>
-            ({{user.winElement.sameGenderSign}}) {{user.winElement.sameGender}} ({{user.winElement.oppositGenderSign}}) {{user.winElement.oppositGender}}</div>
+            {{user.winElement.sameGender}}, {{user.winElement.oppositGender}}</div>
             <div *ngIf="user?.lostElement?.element == 'Metal'">
             <span class="bold">{{user?.lostElement?.relationship}} is your {{user?.lostElement?.description}}:</span><br>
-            ({{user.lostElement.sameGenderSign}}) {{user.lostElement.sameGender}} ({{user.lostElement.oppositGenderSign}}) {{user.lostElement.oppositGender}}</div>
+            {{user.lostElement.sameGender}}, {{user.lostElement.oppositGender}}</div>
             <div *ngIf="user?.motherElement?.element == 'Metal'">
             <span class="bold">{{user?.motherElement?.relationship}} is your {{user?.motherElement?.description}}:</span><br>
-            ({{user.motherElement.sameGenderSign}}) {{user.motherElement.sameGender}} ({{user.motherElement.oppositGenderSign}}) {{user.motherElement.oppositGender}}</div>
+            {{user.motherElement.sameGender}}, {{user.motherElement.oppositGender}}</div>
             <div *ngIf="user?.childElement?.element == 'Metal'">
             <span class="bold">{{user?.childElement?.relationship}} is your {{user?.childElement?.description}}:</span><br>
-            ({{user.childElement.sameGenderSign}}) {{user.childElement.sameGender}} ({{user.childElement.oppositGenderSign}}) {{user.childElement.oppositGender}}</div>
+            {{user.childElement.sameGender}}, {{user.childElement.oppositGender}}</div>
             <div *ngIf="user?.selfElement?.element == 'Metal'">
             <span class="bold">{{user?.selfElement?.relationship}} is your {{user?.selfElement?.description}}:</span><br>
-            ({{user.selfElement.sameGenderSign}}) {{user.selfElement.sameGender}} ({{user.selfElement.oppositGenderSign}}) {{user.selfElement.oppositGender}}</div>
-          <div class="top-padding"><span class="bold">Business: </span> លក់គ្រឿងអល្ល័ង្ការ, វេរលុយ, ដូរលុយ, គ្រឿងដែក, លក់ឥវ៉ាន់ប្រេន</div>
+            {{user.selfElement.sameGender}}, {{user.selfElement.oppositGender}}</div>
+          <div class="top-padding"><span class="bold">Business: </span>
+          Appliances, computer hardware, health care equipments, internet network, machinery, manufacture, mechanic engineering, military, music instruments, technicians, transportation equipment (automobile, bike, ship, etc), TV, video games, and any work that depends on metal, or involves financiaI management (as gold is a synonym of money in Chinese). Any work that involves heavy use of electric equipments also fall into the Metal category.</div>
         </ion-card-content>
       </ion-card>
       <ion-card [ngClass]="{'active': user?.favorable?.elementsList?.indexOf('Fire') != -1}">
@@ -207,20 +214,21 @@
         <ion-card-content class="black-color">
             <div *ngIf="user?.winElement?.element == 'Fire'">
             <span class="bold">{{user?.winElement?.relationship}} is your {{user?.winElement?.description}}:</span><br>
-            ({{user.winElement.sameGenderSign}}) {{user.winElement.sameGender}} ({{user.winElement.oppositGenderSign}}) {{user.winElement.oppositGender}}</div>
+            {{user.winElement.sameGender}}, {{user.winElement.oppositGender}}</div>
             <div *ngIf="user?.lostElement?.element == 'Fire'">
             <span class="bold">{{user?.lostElement?.relationship}} is your {{user?.lostElement?.description}}:</span><br>
-            ({{user.lostElement.sameGenderSign}}) {{user.lostElement.sameGender}} ({{user.lostElement.oppositGenderSign}}) {{user.lostElement.oppositGender}}</div>
+            {{user.lostElement.sameGender}}, {{user.lostElement.oppositGender}}</div>
             <div *ngIf="user?.motherElement?.element == 'Fire'">
             <span class="bold">{{user?.motherElement?.relationship}} is your {{user?.motherElement?.description}}:</span><br>
-            ({{user.motherElement.sameGenderSign}}) {{user.motherElement.sameGender}} ({{user.motherElement.oppositGenderSign}}) {{user.motherElement.oppositGender}}</div>
+            {{user.motherElement.sameGender}}, {{user.motherElement.oppositGender}}</div>
             <div *ngIf="user?.childElement?.element == 'Fire'">
             <span class="bold">{{user?.childElement?.relationship}} is your {{user?.childElement?.description}}:</span><br>
-            ({{user.childElement.sameGenderSign}}) {{user.childElement.sameGender}} ({{user.childElement.oppositGenderSign}}) {{user.childElement.oppositGender}}</div>
+            {{user.childElement.sameGender}}, {{user.childElement.oppositGender}}</div>
             <div *ngIf="user?.selfElement?.element == 'Fire'">
             <span class="bold">{{user?.selfElement?.relationship}} is your {{user?.selfElement?.description}}:</span><br>
-            ({{user.selfElement.sameGenderSign}}) {{user.selfElement.sameGender}} ({{user.selfElement.oppositGenderSign}}) {{user.selfElement.oppositGender}}</div>
-          <div class="top-padding"><span class="bold">Business: </span> លក់គ្រឿងភ្លេីង, គ្រឿងសំអាង, ឧបករណ៍អេឡិចត្រូនិក, តារា, ក្រុមហ៊ុនផ្សព្វផ្សាយ, ទិញលក់ភាគហ៊ុន, ហាងកាហ្វេ, ការ៉ាសសាំង, លក់ហ្គាស, លក់សូឡា</div>
+            {{user.selfElement.sameGender}}, {{user.selfElement.oppositGender}}</div>
+          <div class="top-padding"><span class="bold">Business: </span>
+          Beauty maker, cafe, computer, cooking, electronic, electric engineering, energy, firework, food processing, gas or oil company, laser, lighting, movie production, photography, restaurant, semi-conductor and anything that depends on light or heat, or uses objects that create light or heat.</div>
         </ion-card-content>
       </ion-card>
       <ion-card [ngClass]="{'active': user?.favorable?.elementsList?.indexOf('Wood') != -1}">
@@ -230,20 +238,21 @@
         <ion-card-content class="black-color">
             <div *ngIf="user?.winElement?.element == 'Wood'">
             <span class="bold">{{user?.winElement?.relationship}} is your {{user?.winElement?.description}}:</span><br>
-            ({{user.winElement.sameGenderSign}}) {{user.winElement.sameGender}} ({{user.winElement.oppositGenderSign}}) {{user.winElement.oppositGender}}</div>
+            {{user.winElement.sameGender}}, {{user.winElement.oppositGender}}</div>
             <div *ngIf="user?.lostElement?.element == 'Wood'">
             <span class="bold">{{user?.lostElement?.relationship}} is your {{user?.lostElement?.description}}:</span><br>
-            ({{user.lostElement.sameGenderSign}}) {{user.lostElement.sameGender}} ({{user.lostElement.oppositGenderSign}}) {{user.lostElement.oppositGender}}</div>
+            {{user.lostElement.sameGender}}, {{user.lostElement.oppositGender}}</div>
             <div *ngIf="user?.motherElement?.element == 'Wood'">
             <span class="bold">{{user?.motherElement?.relationship}} is your {{user?.motherElement?.description}}:</span><br>
-            ({{user.motherElement.sameGenderSign}}) {{user.motherElement.sameGender}} ({{user.motherElement.oppositGenderSign}}) {{user.motherElement.oppositGender}}</div>
+            {{user.motherElement.sameGender}}, {{user.motherElement.oppositGender}}</div>
             <div *ngIf="user?.childElement?.element == 'Wood'">
             <span class="bold">{{user?.childElement?.relationship}} is your {{user?.childElement?.description}}:</span><br>
-            ({{user.childElement.sameGenderSign}}) {{user.childElement.sameGender}} ({{user.childElement.oppositGenderSign}}) {{user.childElement.oppositGender}}</div>
+            {{user.childElement.sameGender}}, {{user.childElement.oppositGender}}</div>
             <div *ngIf="user?.selfElement?.element == 'Wood'">
             <span class="bold">{{user?.selfElement?.relationship}} is your {{user?.selfElement?.description}}:</span><br>
-            ({{user.selfElement.sameGenderSign}}) {{user.selfElement.sameGender}} ({{user.selfElement.oppositGenderSign}}) {{user.selfElement.oppositGender}}</div>
-          <div class="top-padding"><span class="bold">Business: </span> វិស្វករ, មេធាវី, សំណង់អាគារ, ដេគ័រ ឌីស្សាញ, ហាងលក់ថ្នាំពេទ្យ, ហាងផ្កា, រៀបចំសួនផ្កា, គ្រូបង្រៀន, សាលារៀន, លក់គ្រឿងឈេី, ជាងចម្លាក់</div>
+            {{user.selfElement.sameGender}}, {{user.selfElement.oppositGender}}</div>
+          <div class="top-padding"><span class="bold">Business: </span>
+          Books, clothing, fabric, forest, furniture, gardening, herbal medicine, library, natural food, office supplies, paper, plant, wood craft, and anything that depends on natural organism material (animals or plants). Also work that involves artistic, creative or spiritual expression symbolizing a tree freely and gracefuly extending its branches, flowers and leafs.</div>
         </ion-card-content>
       </ion-card>
       <ion-card>
@@ -253,20 +262,21 @@
         <ion-card-content class="black-color">
             <div *ngIf="user?.winElement?.element == 'Earth'">
             <span class="bold">{{user?.winElement?.relationship}} is your {{user?.winElement?.description}}:</span><br>
-            ({{user.winElement.sameGenderSign}}) {{user.winElement.sameGender}} ({{user.winElement.oppositGenderSign}}) {{user.winElement.oppositGender}}</div>
+            {{user.winElement.sameGender}},  {{user.winElement.oppositGender}}</div>
             <div *ngIf="user?.lostElement?.element == 'Earth'">
             <span class="bold">{{user?.lostElement?.relationship}} is your {{user?.lostElement?.description}}:</span><br>
-            ({{user.lostElement.sameGenderSign}}) {{user.lostElement.sameGender}} ({{user.lostElement.oppositGenderSign}}) {{user.lostElement.oppositGender}}</div>
+            {{user.lostElement.sameGender}}, {{user.lostElement.oppositGender}}</div>
             <div *ngIf="user?.motherElement?.element == 'Earth'">
             <span class="bold">{{user?.motherElement?.relationship}} is your {{user?.motherElement?.description}}:</span><br>
-            ({{user.motherElement.sameGenderSign}}) {{user.motherElement.sameGender}} ({{user.motherElement.oppositGenderSign}}) {{user.motherElement.oppositGender}}</div>
+            {{user.motherElement.sameGender}}, {{user.motherElement.oppositGender}}</div>
             <div *ngIf="user?.childElement?.element == 'Earth'">
             <span class="bold">{{user?.childElement?.relationship}} is your {{user?.childElement?.description}}:</span><br>
-            ({{user.childElement.sameGenderSign}}) {{user.childElement.sameGender}} ({{user.childElement.oppositGenderSign}}) {{user.childElement.oppositGender}}</div>
+            {{user.childElement.sameGender}}, {{user.childElement.oppositGender}}</div>
             <div *ngIf="user?.selfElement?.element == 'Earth'">
             <span class="bold">{{user?.selfElement?.relationship}} is your {{user?.selfElement?.description}}:</span><br>
-            ({{user.selfElement.sameGenderSign}}) {{user.selfElement.sameGender}} ({{user.selfElement.oppositGenderSign}}) {{user.selfElement.oppositGender}}</div>
-          <div class="top-padding"><span class="bold">Business: </span> អចលនទ្រព្យ, ភោជនីយ៍ដ្ឋាន, លក់ឥវ៉ាន់រាយ និងបោះដុំ, ធនាគារ, រំលោះ បញ្ចាំ</div>
+            {{user.selfElement.sameGender}}, {{user.selfElement.oppositGender}}</div>
+          <div class="top-padding"><span class="bold">Business: </span>
+          Architecture, antiques, astrology, building material, ceramics, demolition, design, farmer, feng shui, fortune telling, funerals, gardener, geomancy, landscaping, marblework, pottery, real estate, recycle, sculpture, stone masonry, and any work that involves earth, soil, land, or rock.</div>
         </ion-card-content>
       </ion-card>
     </ion-list>
@@ -318,14 +328,14 @@
                         </div>
                         <div class="top-container border-bottom {{veyChor.Top.Color}}-color">
                             <div class="top-text">{{veyChor.Top.Chinese}}</div>
-                            <div class="middle-text">{{veyChor.Top.Element}} {{veyChor.Top.Sign}}</div>
+                            <div class="middle-text">{{veyChor.Top.Element}}{{veyChor.Top.Sign}}</div>
                             <!-- <div class="bottom-text">
                                 <span class="red-color">HT </span>
                                 <span class="green-color">HD </span>
                                 <span class="green-color">HM </span>
                                 <span class="red-color">HY </span>
                             </div> -->
-                            <div class="bottom-text">{{veyChor.Top.English}} ({{veyChor.Top.Shortcut}})</div>
+                            <div class="bottom-text">({{veyChor.Top.Shortcut}})</div>
                         </div>
                     </div>
                     <div [ngClass]="{'active': veyChor.isBottomActive == true, 'inactive': veyChor.Bottom.Element == user.unluckyElement}">
@@ -334,14 +344,14 @@
                         </div>
                         <div class="top-container border-bottom {{veyChor.Bottom.Color}}-color">
                             <div class="top-text">{{veyChor.Bottom.Chinese}}</div>
-                            <div class="middle-text">{{veyChor.Bottom.Zodiac}}  </div>
+                            <div class="middle-text">{{veyChor.Bottom.Zodiac}}</div>
                             <!-- <div class="bottom-text">
                                 <span class="green-color">ET </span>
                                 <span class="red-color">ED </span>
                                 <span class="green-color">EM </span>
                                 <span class="red-color">EY </span>
                             </div> -->
-                            <div class="bottom-text">{{veyChor.Bottom.English}} {{veyChor.Bottom.Sign}} ({{veyChor.Bottom.Shortcut}})</div>
+                            <div class="bottom-text">({{veyChor.Bottom.Shortcut}}){{veyChor.Bottom.Sign}}</div>
                         </div>
                     </div>
                 </ion-col>
@@ -358,13 +368,13 @@
 	                <div class="header-text border-bottom">{{year.year}} ({{year.age}})</div>
 	                <div class="year-container {{year.top.Color}}-color" [ngClass]="{'active': year.isTopActive == true, 'inactive': year.top.Element == user.unluckyElement}">
 	                    <div class="top-text">{{year.top.Chinese}}</div>
-	                    <div class="middle-text">{{year.top.Element}} {{year.top.Sign}}</div>
-	                    <div class="bottom-text">{{year.top.English}} ({{year.top.Shortcut}})</div>
+	                    <div class="middle-text">{{year.top.Element}}{{year.top.Sign}}</div>
+	                    <div class="bottom-text">({{year.top.Shortcut}})</div>
 	                </div>
 	                <div class="year-container {{year.bottom.Color}}-color" [ngClass]="{'active': year.isBottomActive == true, 'inactive': year.bottom.Element == user.unluckyElement}">
 	                    <div class="top-text">{{year.bottom.Chinese}}</div>
 	                    <div class="middle-text">{{year.bottom.Zodiac}}</div>
-	                    <div class="bottom-text">{{year.bottom.English}} {{year.bottom.Sign}} ({{year.bottom.Shortcut}})</div>
+	                    <div class="bottom-text">({{year.bottom.Shortcut}}){{year.bottom.Sign}}</div>
 	                </div>
 	            </ion-col>
             </ion-row>
@@ -378,13 +388,13 @@
 	                <div class="header-text border-bottom">{{month.month}} {{month.year}}</div>
 	                <div class="month-container {{month.top.Color}}-color" [ngClass]="{'active': month.isTopActive == true, 'inactive': month.top.Element == user.unluckyElement}">
 	                    <div class="top-text">{{month.top.Chinese}}</div>
-	                    <div class="middle-text">{{month.top.Element}} {{month.top.Sign}}</div>
-	                    <div class="bottom-text">{{month.top.English}} ({{month.top.Shortcut}})</div>
+	                    <div class="middle-text">{{month.top.Element}}{{month.top.Sign}}</div>
+	                    <div class="bottom-text">({{month.top.Shortcut}})</div>
 	                </div>
 	                <div class="month-container {{month.bottom.Color}}-color" [ngClass]="{'active': month.isBottomActive == true, 'inactive': month.bottom.Element == user.unluckyElement}">
                         <div class="top-text">{{month.bottom.Chinese}}</div>
-                        <div class="middle-text">{{month.bottom.Zodiac}} </div>
-                        <div class="bottom-text">{{month.bottom.English}} {{month.bottom.Sign}} ({{month.bottom.Shortcut}})</div>
+                        <div class="middle-text">{{month.bottom.Zodiac}}</div>
+                        <div class="bottom-text">({{month.bottom.Shortcut}}){{month.bottom.Sign}}</div>
                     </div>
 	            </ion-col>
             </ion-row>

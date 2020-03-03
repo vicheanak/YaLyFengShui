@@ -1185,4 +1185,8 @@ export class ResultPage implements OnInit {
 	goBack(){
 		this.location.back();
 	}
+
+	edit(id){
+		this.router.navigate(['/tabs/tab1/'+id]);
+	}
 }

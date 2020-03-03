@@ -11,3 +11,9 @@ section:not(.full-width),
 .full-width>header {
     padding: 0 10px;
 }
+
+ion-toolbar {
+      --color: #845119;
+      background: #ffcf37;
+      --background: #ffcf37;
+  }

@@ -3,6 +3,12 @@ ion-card-subtitle {
     font-weight: 600;
 }
 
+ion-toolbar {
+      --color: #845119;
+      background: #ffcf37;
+      --background: #ffcf37;
+  }
+
 .cell-class {
     border-color: black;
     border-width: .01em;
